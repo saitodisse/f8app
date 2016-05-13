@@ -81,3 +81,47 @@ We've created a series of tutorials at [makeitopen.com](http://makeitopen.com/) 
   ```
   $ react-native run-ios
   ```
+
+
+--------------------------
+
+# Running on android
+
+```sh
+# open android folder in android-studio to install graddle
+
+nvm use 5
+npm uninstall -g react-native
+npm install -g react-native-cli
+
+# start local Mongo
+sudo systemctl restart mongodb.service
+# OR use mongo with azk (FIXME)
+# export DATABASE_URI=mongodb://f8app-mongodb.dev.azk.io:80/my-awesome-database
+# azk restart -Rvv
+
+# start servers
+npm install
+npm start
+
+# load sample data
+npm run import-data
+
+# emulator
+genymotion
+# OR ~/Android/Sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6_API_23
+# OR plug your phone
+
+# adb reverse
+adb reverse tcp:8080 tcp:8080 && adb reverse tcp:8081 tcp:8081
+
+# react native JS server
+echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances
+echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events
+echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+watchman shutdown-server
+react-native start
+
+# install app on device
+react-native run-android
+```
