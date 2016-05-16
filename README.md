@@ -85,7 +85,7 @@ We've created a series of tutorials at [makeitopen.com](http://makeitopen.com/) 
 
 --------------------------
 
-# Running on android
+# Running on android (Arch Linux)
 
 ```sh
 # open android folder in android-studio to install graddle
@@ -124,4 +124,38 @@ react-native start
 
 # install app on device
 react-native run-android
+```
+
+# Running on android (Windows)
+
+```sh
+# open android folder in android-studio to install graddle
+
+# start local Mongo
+"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe"
+
+# start servers
+npm install
+npm start
+
+# load sample data
+npm run import-data
+
+# start an emulator at least with "Android 5"
+# Open VSemulator
+# Open genymotion
+# OR plug your phone
+
+# adb reverse
+adb reverse tcp:8080 tcp:8080 && adb reverse tcp:8081 tcp:8081
+
+# react native JS server
+react-native start
+
+# install app on device
+react-native run-android
+
+# next time just run:
+"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe"
+windows-start.bat
 ```
